@@ -1,17 +1,17 @@
 import React, { useState, useContext, createContext } from 'react';
 const AllContext = createContext(null);
 export const AllContextProvider = ({ children }) => {
-  const [todoItem, setTodoItem] = useState([]);
+  // const [todoItem, setTodoItem] = useState([]);
   return (
-    <AllContextProvider.Provider
+    <AllContext.Provider
       value={{
-        todoItem,
-        setTodoItem,
+        // todoItem,
+        // setTodoItem,
       }}
     >
       {children}
-    </AllContextProvider.Provider>
+    </AllContext.Provider>
   );
 };
 
-export const useHotelContext = () => useContext(AllContext);
+export const useAllContext = () => useContext(AllContext);
