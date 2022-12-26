@@ -1,25 +1,47 @@
-.MoveDoneThingsToggle{
+.MoveDoneThingsToggle {
   margin-top: 10px;
-  margin-bottom: 30px;
+  margin-bottom: 40px;
   padding-top: 5px;
   display: flex;
   justify-content: flex-end;
   border-top: 1px solid #7d8dbf;
-  div{  
+  div {
     display: flex;
     justify-content: center;
     align-items: center;
   }
-  p{
+  p {
     margin: 0px 8px 0px 0px;
     font-size: 14px;
-    color:#7d8dbf;
+    color: #7d8dbf;
   }
-  .MoveDoneThingsToggle_switch{
+  .MoveDoneThingsToggle_switch {
     margin-right: 8px;
     transform: scale(0.8);
   }
+  .ant-switch-handle::before {
+    background-color: #cccff2;
+  }
+  .ant-switch-inner {
+    background-color: #fff;
+  }
 }
-:where(.css-dev-only-do-not-override-9ntgx0).ant-switch.ant-switch-checked{
-  background-color: #7d8dbf !important;
+
+.ant-switch-checked {
+  background-color: transparent;
+  .ant-switch-handle::before {
+    background-color: #fff;
+  }
+  .ant-switch-inner {
+    background-color: #cccff2;
+  }
 }
+//開關 開 背景 紫
+//開關 開 原點 白
+
+//開關 關 背景 白
+// :where(.css-dev-only-do-not-override-9ntgx0).ant-switch .ant-switch-inner {
+//   background-color: #fff;
+// }
+
+//開關 關 原點 紫
