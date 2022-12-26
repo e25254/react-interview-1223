@@ -1,0 +1,65 @@
+.TodoListItem {
+  width: 100%;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  box-sizing: border-box;
+  border-radius: 5px;
+  background-color: #fff;
+  border-left: 6px solid #7d8dbf;
+  overflow: hidden;
+  margin: 10px 0px ;
+  .TodoListItem_text {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    flex: 1;
+    p {
+      color: #7d8dbf;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+  }
+  .TodoListItem_icon {
+    margin: 0px 20px;
+    color:#7d8dbf;
+    transform: scale(1.3);
+  }
+  .TodoListItem_CheckBox {
+    margin: 0px 20px;
+    .ant-checkbox-inner,
+    .ant-checkbox-input {
+      transform: scale(1.5);
+    }
+    .ant-checkbox-checked .ant-checkbox-inner {
+      background-color: #7d8dbf;
+      border-color: #7d8dbf;
+    }
+  }
+  .TodoListItem_CheckBox:hover {
+    .ant-checkbox-inner {
+      border-color: #7d8dbf !important;
+    }
+    .ant-checkbox-checked .ant-checkbox-inner {
+      background-color: #7d8dbf;
+      border-color: #7d8dbf;
+    }
+  }
+}
+:where(.css-dev-only-do-not-override-9ntgx0).ant-checkbox-wrapper:not(
+    .ant-checkbox-wrapper-disabled
+  ):hover
+  .ant-checkbox-checked:not(.ant-checkbox-disabled)
+  .ant-checkbox-inner {
+  background-color: #7d8dbf;
+}
+:where(.css-dev-only-do-not-override-9ntgx0).ant-checkbox-wrapper:not(
+    .ant-checkbox-wrapper-disabled
+  ):hover
+  .ant-checkbox-checked:not(.ant-checkbox-disabled):after {
+  border-color: #7d8dbf;
+}
+:where(.css-dev-only-do-not-override-9ntgx0).ant-checkbox-checked:after {
+  border-color: #7d8dbf;
+}
