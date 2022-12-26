@@ -2,10 +2,26 @@ import React, { useState, useContext, createContext } from 'react';
 const AllContext = createContext(null);
 export const AllContextProvider = ({ children }) => {
   const [todoItem, setTodoItem] = useState([
-    'Learn React.js',
-    'Learn Angular.js',
-    'Learn photoShop',
-    'Learn node.js',
+    {
+      todo: 'Learn React.js',
+      create_time: '2022/12/23 18:59:23',
+      done: true,
+    },
+    {
+      todo: 'Learn Angular.js',
+      create_time: '2022/12/25 18:59:23',
+      done: false,
+    },
+    {
+      todo: 'Learn photoShop',
+      create_time: '2022/12/20 18:59:23',
+      done: false,
+    },
+    {
+      todo: 'Learn node.js',
+      create_time: '2022/11/23 18:59:23',
+      done: true,
+    },
   ]);
   return (
     <AllContext.Provider

@@ -2,7 +2,7 @@ import React from 'react';
 import './TodoListItem.scss';
 import { Checkbox } from 'antd';
 import { MdOutlineClose } from 'react-icons/md';
-import { AllContextProvider, useAllContext } from '../AllContext/AllContext';
+import { useAllContext } from '../AllContext/AllContext';
 
 function TodoListItem() {
   const { todoItem, setTodoItem } = useAllContext();
@@ -11,9 +11,26 @@ function TodoListItem() {
       {todoItem.map((v, i) => {
         return (
           <div className="TodoListItem" key={i}>
-            <Checkbox className="TodoListItem_CheckBox"></Checkbox>
+            <Checkbox
+              className="TodoListItem_CheckBox"
+              checked={v.done}
+              onChange={() => {
+                let newTodoList = todoItem[i];
+                newTodoList.done = !todoItem[i].done;
+                setTodoItem([...todoItem], newTodoList);
+              }}
+            ></Checkbox>
             <div className="TodoListItem_text">
-              <p>{v}</p>
+              <p
+                style={v.done ? { textDecoration: 'line-through' } : {}}
+                onClick={() => {
+                  let newTodoList = todoItem[i];
+                  newTodoList.done = !todoItem[i].done;
+                  setTodoItem([...todoItem], newTodoList);
+                }}
+              >
+                {v.todo}
+              </p>
             </div>
             <div
               className="TodoListItem_icon"
