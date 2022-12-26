@@ -1,0 +1,25 @@
+.MoveDoneThingsToggle{
+  margin-top: 10px;
+  margin-bottom: 30px;
+  padding-top: 5px;
+  display: flex;
+  justify-content: flex-end;
+  border-top: 1px solid #7d8dbf;
+  div{  
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  p{
+    margin: 0px 8px 0px 0px;
+    font-size: 14px;
+    color:#7d8dbf;
+  }
+  .MoveDoneThingsToggle_switch{
+    margin-right: 8px;
+    transform: scale(0.8);
+  }
+}
+:where(.css-dev-only-do-not-override-9ntgx0).ant-switch.ant-switch-checked{
+  background-color: #7d8dbf !important;
+}

@@ -2,6 +2,8 @@ import React from 'react';
 import './Home.scss';
 import ProgressAnt from '../../Component/ProgressAnt/ProgressAnt';
 import TodoListBlock from '../../Component/TosoListBlock/TodoListBlock';
+import MoveDoneThingsToggle from '../../Component/MoveDoneThingsToggle/MoveDoneThingsToggle';
+import AddToList from '../../Component/AddToList/AddToList';
 
 function TodoList() {
   return (
@@ -13,6 +15,8 @@ function TodoList() {
         </div>
         <ProgressAnt />
         <TodoListBlock />
+        <MoveDoneThingsToggle />
+        <AddToList />
       </div>
     </>
   );

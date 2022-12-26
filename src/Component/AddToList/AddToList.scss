@@ -1,0 +1,28 @@
+.AddToList {
+  .AddToList_text {
+    p {
+      margin: 0px;
+      color: #7d8dbf;
+      margin-bottom: 5px;
+    }
+  }
+  .AddToList_input {
+    display: flex;
+    input {
+      flex: 1;
+      border: none;
+      height: 40px;
+      border-radius: 4px;
+    }
+    .AddToList_input_icon {
+      width: 50px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 4px;
+      margin: 0px 8px;
+      background-color: #7d8ecd;
+      color: white;
+    }
+  }
+}
