@@ -5,7 +5,7 @@ import { useAllContext } from '../AllContext/AllContext';
 function ProgressAnt() {
   const { percentage, setPercentage, todoItem } = useAllContext();
   useEffect(() => {
-    if (todoItem.length > 1) {
+    if (todoItem.length > 0) {
       let finish = todoItem.filter((v) => {
         return v.done;
       });
