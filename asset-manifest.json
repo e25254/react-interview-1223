@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/react-interview-1223/static/css/main.dcc9bda6.css",
-    "main.js": "/react-interview-1223/static/js/main.5ec4b537.js",
+    "main.css": "/react-interview-1223/static/css/main.5e2a0a66.css",
+    "main.js": "/react-interview-1223/static/js/main.fc09206c.js",
     "static/js/787.b978847b.chunk.js": "/react-interview-1223/static/js/787.b978847b.chunk.js",
     "index.html": "/react-interview-1223/index.html",
-    "main.dcc9bda6.css.map": "/react-interview-1223/static/css/main.dcc9bda6.css.map",
-    "main.5ec4b537.js.map": "/react-interview-1223/static/js/main.5ec4b537.js.map",
+    "main.5e2a0a66.css.map": "/react-interview-1223/static/css/main.5e2a0a66.css.map",
+    "main.fc09206c.js.map": "/react-interview-1223/static/js/main.fc09206c.js.map",
     "787.b978847b.chunk.js.map": "/react-interview-1223/static/js/787.b978847b.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.dcc9bda6.css",
-    "static/js/main.5ec4b537.js"
+    "static/css/main.5e2a0a66.css",
+    "static/js/main.fc09206c.js"
   ]
 }
