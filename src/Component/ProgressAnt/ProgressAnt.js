@@ -5,13 +5,15 @@ import { useAllContext } from '../AllContext/AllContext';
 function ProgressAnt() {
   const { percentage, setPercentage, todoItem } = useAllContext();
   useEffect(() => {
-    let finish = todoItem.filter((v) => {
-      return v.done;
-    });
-    // let notFinish = todoItem.filter((v) => {
-    //   return !v.done;
-    // });
-    setPercentage(Math.round((finish.length / todoItem.length) * 100));
+    if (todoItem.length > 1) {
+      let finish = todoItem.filter((v) => {
+        return v.done;
+      });
+      // let notFinish = todoItem.filter((v) => {
+      //   return !v.done;
+      // });
+      setPercentage(Math.round((finish.length / todoItem.length) * 100));
+    }
   }, [todoItem]);
   return (
     <div className="ProgressAnt">
