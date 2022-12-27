@@ -3,6 +3,8 @@ import './AddToList.scss';
 import { FaPlus } from 'react-icons/fa';
 import { useAllContext } from '../AllContext/AllContext';
 import dayjs, { Dayjs } from 'dayjs';
+import { json } from 'react-router-dom';
+import { v4 as uuidv4 } from 'uuid';
 function AddToList() {
   const { todoItem, setTodoItem, inputWord, setInputWord } = useAllContext();
   // 處理要避開輸入法拼字用Enter的指標
@@ -10,6 +12,22 @@ function AddToList() {
   // console.log(dayjs(now).format('YYYY/MM/DD hh:mm:ss '));
   // console.log(Date.parse(todoItem[1].create_time));
   // console.log(Date.parse(todoItem[2].create_time));
+  const inputHandler = () => {
+    if (!inputWord) {
+      return;
+    }
+
+    setTodoItem([
+      ...todoItem,
+      {
+        todo: inputWord,
+        create_time: dayjs(new Date()).format('YYYY/MM/DD HH:mm:ss'),
+        done: false,
+        uuid: uuidv4(),
+      },
+    ]);
+    setInputWord('');
+  };
   return (
     <div className="AddToList">
       <div className="AddToList_text">
@@ -31,19 +49,11 @@ function AddToList() {
           }}
           onKeyDown={(e) => {
             if (e.key === 'Enter' && isComposition === false) {
-              setTodoItem([
-                ...todoItem,
-                {
-                  todo: e.target.value,
-                  create_time: dayjs(new Date()).format('YYYY/MM/DD HH:mm:ss'),
-                  done: false,
-                },
-              ]);
-              setInputWord('');
+              inputHandler();
             }
           }}
         />
-        <div className="AddToList_input_icon">
+        <div className="AddToList_input_icon" onClick={inputHandler}>
           <FaPlus />
         </div>
       </div>

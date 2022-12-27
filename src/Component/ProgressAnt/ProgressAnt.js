@@ -1,12 +1,23 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Progress } from 'antd';
 import './ProgressAnt.scss';
+import { useAllContext } from '../AllContext/AllContext';
 function ProgressAnt() {
+  const { percentage, setPercentage, todoItem } = useAllContext();
+  useEffect(() => {
+    let finish = todoItem.filter((v) => {
+      return v.done;
+    });
+    // let notFinish = todoItem.filter((v) => {
+    //   return !v.done;
+    // });
+    setPercentage(Math.round((finish.length / todoItem.length) * 100));
+  }, [todoItem]);
   return (
     <div className="ProgressAnt">
-      <p>50%</p>
+      <p>{percentage}%</p>
       <Progress
-        percent={50}
+        percent={percentage}
         showInfo={false}
         strokeColor={'#9BAFF6'}
         strokeWidth={15}

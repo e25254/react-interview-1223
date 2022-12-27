@@ -5,44 +5,61 @@ import { MdOutlineClose } from 'react-icons/md';
 import { useAllContext } from '../AllContext/AllContext';
 
 function TodoListItem() {
-  const { todoItem, setTodoItem, moveDoneThingsToggle } = useAllContext();
+  const {
+    todoItem,
+    setTodoItem,
+    moveDoneThingsToggle,
+    displayTodoItem,
+    setDisplayTodoItem,
+  } = useAllContext();
+
   useEffect(() => {
-    let tmp = todoItem.map((v) => {
-      return { ...v };
-    });
-    if (moveDoneThingsToggle) {
-      tmp = tmp.sort((a, b) => {
-        return a.done - b.done;
+    if (todoItem) {
+      let tmp = todoItem.map((v) => {
+        return { ...v };
       });
-    } else {
-      tmp = tmp.sort((a, b) => {
-        return Date.parse(a.create_time) - Date.parse(b.create_time);
-      });
+      if (moveDoneThingsToggle) {
+        tmp = tmp.sort((a, b) => {
+          return a.done - b.done;
+        });
+      } else {
+        tmp = tmp.sort((a, b) => {
+          return Date.parse(a.create_time) - Date.parse(b.create_time);
+        });
+      }
+      window.localStorage.setItem('myTodoList', JSON.stringify(todoItem));
+      setDisplayTodoItem(tmp);
     }
-    setTodoItem(tmp);
-  }, [moveDoneThingsToggle]);
+  }, [moveDoneThingsToggle, todoItem]);
+
   return (
     <>
-      {todoItem
-        ? todoItem.map((v, i) => {
+      {displayTodoItem
+        ? displayTodoItem.map((v, i) => {
             return (
               <div className="TodoListItem" key={i}>
                 <Checkbox
                   className="TodoListItem_CheckBox"
                   checked={v.done}
                   onChange={() => {
-                    let newTodoList = todoItem[i];
-                    newTodoList.done = !todoItem[i].done;
-                    setTodoItem([...todoItem], newTodoList);
+                    let newTodoList = todoItem.filter((h) => {
+                      return v.todo === h.todo && v.uuid === h.uuid;
+                    });
+                    // console.log(newTodoList[0].done);
+                    newTodoList[0].done = !newTodoList[0].done;
+                    setTodoItem([...todoItem], newTodoList[0]);
                   }}
                 ></Checkbox>
                 <div className="TodoListItem_text">
                   <p
                     style={v.done ? { textDecoration: 'line-through' } : {}}
                     onClick={() => {
-                      let newTodoList = todoItem[i];
-                      newTodoList.done = !todoItem[i].done;
-                      setTodoItem([...todoItem], newTodoList);
+                      let newTodoList = todoItem.filter((h) => {
+                        return v.todo === h.todo && v.uuid === h.uuid;
+                      });
+                      // console.log(newTodoList[0].done);
+                      newTodoList[0].done = !newTodoList[0].done;
+                      setTodoItem([...todoItem], newTodoList[0]);
                     }}
                   >
                     {v.todo}
@@ -53,7 +70,7 @@ function TodoListItem() {
                   onClick={() => {
                     let newTodoList = todoItem;
                     newTodoList = newTodoList.filter((h) => {
-                      return h !== v;
+                      return v.uuid !== h.uuid;
                     });
                     setTodoItem(newTodoList);
                   }}

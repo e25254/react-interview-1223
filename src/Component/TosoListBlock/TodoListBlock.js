@@ -3,11 +3,11 @@ import TodoListItem from '../TodoListItem/TodoListItem';
 import './TodoListBlock.scss';
 import { useAllContext } from '../AllContext/AllContext';
 function TodoListBlock() {
-  const { todoItem } = useAllContext();
+  const { todoItem, displayTodoItem } = useAllContext();
   const theLastTodo = useRef();
   useEffect(() => {
     theLastTodo.current?.scrollIntoView({ behavior: 'smooth' });
-  }, [todoItem]);
+  }, [displayTodoItem]);
 
   return (
     <div className="TodoListBlock">
