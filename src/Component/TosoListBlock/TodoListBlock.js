@@ -1,10 +1,18 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import TodoListItem from '../TodoListItem/TodoListItem';
 import './TodoListBlock.scss';
+import { useAllContext } from '../AllContext/AllContext';
 function TodoListBlock() {
+  const { todoItem } = useAllContext();
+  const theLastTodo = useRef();
+  useEffect(() => {
+    theLastTodo.current?.scrollIntoView({ behavior: 'smooth' });
+  }, [todoItem]);
+
   return (
     <div className="TodoListBlock">
       <TodoListItem />
+      <div ref={theLastTodo}></div>
     </div>
   );
 }

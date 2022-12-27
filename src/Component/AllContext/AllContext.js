@@ -23,11 +23,17 @@ export const AllContextProvider = ({ children }) => {
       done: true,
     },
   ]);
+  const [inputWord, setInputWord] = useState('');
+  const [moveDoneThingsToggle, setMoveDoneThingsToggle] = useState(false);
   return (
     <AllContext.Provider
       value={{
         todoItem,
         setTodoItem,
+        inputWord,
+        setInputWord,
+        moveDoneThingsToggle,
+        setMoveDoneThingsToggle,
       }}
     >
       {children}
