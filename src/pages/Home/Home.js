@@ -11,8 +11,8 @@ function TodoList() {
     <>
       <div className="BackGround">
         <div className="TodoList_Title">
-          <h1>TodoList</h1>
-          <p>ADD THING TO DO</p>
+          <h1>Todo List</h1>
+          <p>Add Thing To Do</p>
         </div>
         <ProgressAnt />
         <TodoListBlock />
