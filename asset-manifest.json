@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/static/css/main.dcc9bda6.css",
-    "main.js": "/static/js/main.d0046118.js",
-    "static/js/787.b978847b.chunk.js": "/static/js/787.b978847b.chunk.js",
-    "index.html": "/index.html",
-    "main.dcc9bda6.css.map": "/static/css/main.dcc9bda6.css.map",
-    "main.d0046118.js.map": "/static/js/main.d0046118.js.map",
-    "787.b978847b.chunk.js.map": "/static/js/787.b978847b.chunk.js.map"
+    "main.css": "/react-interview-1223/static/css/main.dcc9bda6.css",
+    "main.js": "/react-interview-1223/static/js/main.5ec4b537.js",
+    "static/js/787.b978847b.chunk.js": "/react-interview-1223/static/js/787.b978847b.chunk.js",
+    "index.html": "/react-interview-1223/index.html",
+    "main.dcc9bda6.css.map": "/react-interview-1223/static/css/main.dcc9bda6.css.map",
+    "main.5ec4b537.js.map": "/react-interview-1223/static/js/main.5ec4b537.js.map",
+    "787.b978847b.chunk.js.map": "/react-interview-1223/static/js/787.b978847b.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.dcc9bda6.css",
-    "static/js/main.d0046118.js"
+    "static/js/main.5ec4b537.js"
   ]
 }
