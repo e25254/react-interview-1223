@@ -1,40 +1,36 @@
 import React, { useState } from 'react';
 import './AddToList.scss';
 import { FaPlus } from 'react-icons/fa';
-import { useAllContext } from '../AllContext/AllContext';
-import dayjs, { Dayjs } from 'dayjs';
-
-import { v4 as uuidv4 } from 'uuid';
-import { useSelector, useDispatch } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { addTodo } from '../Action/Action';
 function AddToList() {
-  const { todoItem, setTodoItem, inputWord, setInputWord } = useAllContext();
+  const dispatch = useDispatch();
+  // 輸入的文字
+  const [inputWord, setInputWord] = useState('');
   // 處理要避開輸入法拼字用Enter的指標
   const [isComposition, setIsComposition] = useState(false);
-  const todoListFromReducer = useSelector((state) => {
-    return state.TodoList;
-  });
-  const dispatch = useDispatch();
-  // console.log(dayjs(now).format('YYYY/MM/DD hh:mm:ss '));
-  // console.log(Date.parse(todoItem[1].create_time));
-  // console.log(Date.parse(todoItem[2].create_time));
-  // const dispatch = useDispatch();
-  const inputHandler = () => {
+
+  //  提交給  redux
+  const AddTodoDispatch = () => {
     if (!inputWord) {
       return;
     }
     dispatch(addTodo(inputWord));
-    // setTodoItem([
-    //   ...todoItem,
-    //   {
-    //     todo: inputWord,
-    //     create_time: dayjs(new Date()).format('YYYY/MM/DD HH:mm:ss'),
-    //     done: false,
-    //     uuid: uuidv4(),
-    //   },
-    // ]);
     setInputWord('');
   };
+
+  //  輸入編輯
+  const inputHandler = (value) => {
+    setInputWord(value.target.value);
+  };
+
+  //  按下 enter 送出
+  const pressEnter = (key) => {
+    if (key.key === 'Enter' && isComposition === false) {
+      AddTodoDispatch();
+    }
+  };
+
   return (
     <div className="AddToList">
       <div className="AddToList_text">
@@ -44,9 +40,7 @@ function AddToList() {
         <input
           type="text"
           value={inputWord}
-          onChange={(e) => {
-            setInputWord(e.target.value);
-          }}
+          onChange={inputHandler}
           // 中文輸入法用
           onCompositionStart={() => {
             setIsComposition(true);
@@ -54,13 +48,9 @@ function AddToList() {
           onCompositionEnd={() => {
             setIsComposition(false);
           }}
-          onKeyDown={(e) => {
-            if (e.key === 'Enter' && isComposition === false) {
-              inputHandler();
-            }
-          }}
+          onKeyDown={pressEnter}
         />
-        <div className="AddToList_input_icon" onClick={inputHandler}>
+        <div className="AddToList_input_icon" onClick={AddTodoDispatch}>
           <FaPlus />
         </div>
       </div>

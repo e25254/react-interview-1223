@@ -44,12 +44,12 @@ function TodoListItem() {
       );
       setDisplayTodoItem(tmp);
     }
-  }, [moveDoneThingsToggle, todoItem]);
+  }, [moveDoneThingsToggle, todoListFromReducer]);
 
   return (
     <>
-      {todoListFromReducer
-        ? todoListFromReducer.map((v, i) => {
+      {displayTodoItem
+        ? displayTodoItem.map((v, i) => {
             return (
               <div className="TodoListItem" key={i}>
                 <Checkbox
