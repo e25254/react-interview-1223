@@ -1,6 +1,6 @@
-import { CombinedState, combineReducers } from 'redux';
+import { combineReducers } from 'redux';
 import { configureStore } from '@reduxjs/toolkit';
-import todoReducer from '../reducer/todoList';
+import todoReducer from '../Reducer/Reducer';
 const allReducer = combineReducers({
   TodoList: todoReducer,
 });

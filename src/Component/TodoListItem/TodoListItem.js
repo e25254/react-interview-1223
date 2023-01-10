@@ -3,11 +3,13 @@ import './TodoListItem.scss';
 import { Checkbox } from 'antd';
 import { MdOutlineClose } from 'react-icons/md';
 import { useAllContext } from '../AllContext/AllContext';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
+import { delTodo } from '../Action/Action';
 
 function TodoListItem() {
   const todoListFromReducer = useSelector((state) => state.TodoList);
-  console.log('123', todoListFromReducer);
+  const dispatch = useDispatch();
+  // console.log('123', todoListFromReducer);
   const {
     todoItem,
     setTodoItem,
@@ -88,6 +90,7 @@ function TodoListItem() {
                     //   return v.uuid !== h.uuid;
                     // });
                     // setTodoItem(newTodoList);
+                    dispatch(delTodo(v.uuid));
                   }}
                 >
                   <MdOutlineClose />
