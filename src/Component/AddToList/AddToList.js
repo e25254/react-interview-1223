@@ -16,7 +16,6 @@ function AddToList() {
     if (!inputWord) {
       return;
     }
-
     setTodoItem([
       ...todoItem,
       {
