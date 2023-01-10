@@ -7,7 +7,7 @@ function TodoListBlock() {
   const theLastTodo = useRef();
   useEffect(() => {
     theLastTodo.current?.scrollIntoView({ behavior: 'smooth' });
-  }, [displayTodoItem]);
+  }, [displayTodoItem.length]);
 
   return (
     <div className="TodoListBlock">
