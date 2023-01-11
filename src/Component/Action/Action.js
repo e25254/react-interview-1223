@@ -1,11 +1,17 @@
 //  新增：
-export const addTodo = (text) => ({
+export const addTodo = (v) => ({
   type: 'ADD_TODO',
-  payload: { text },
+  payload: v,
 });
 
 //  刪除：
-export const delTodo = (uuid) => ({
+export const delTodo = (v) => ({
   type: 'DEL_TODO',
-  payload: { uuid },
+  payload: v,
+});
+
+//  是否完成：
+export const doneTodo = (v) => ({
+  type: 'DONE_TODO',
+  payload: v,
 });

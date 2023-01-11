@@ -4,19 +4,18 @@ import { Checkbox } from 'antd';
 import { MdOutlineClose } from 'react-icons/md';
 import { useAllContext } from '../AllContext/AllContext';
 import { useSelector, useDispatch } from 'react-redux';
-import { delTodo } from '../Action/Action';
+import { delTodo, doneTodo } from '../Action/Action';
 
 function TodoListItem() {
   const todoListFromReducer = useSelector((state) => state.TodoList);
   const dispatch = useDispatch();
   // console.log('123', todoListFromReducer);
-  const {
-    todoItem,
-    setTodoItem,
-    moveDoneThingsToggle,
-    displayTodoItem,
-    setDisplayTodoItem,
-  } = useAllContext();
+  const { moveDoneThingsToggle, displayTodoItem, setDisplayTodoItem } =
+    useAllContext();
+
+  // const doneTodoDispatch = (v) => {
+  //   dispatch(doneTodo(v.uuid));
+  // };
 
   useEffect(() => {
     if (todoListFromReducer) {
@@ -37,7 +36,6 @@ function TodoListItem() {
       // }
 
       // 寫進localStorage && 寫近displayTodoItem 不影響redux
-
       window.localStorage.setItem(
         'myTodoList',
         JSON.stringify(todoListFromReducer)
@@ -55,27 +53,15 @@ function TodoListItem() {
                 <Checkbox
                   className="TodoListItem_CheckBox"
                   checked={v.done}
-                  onChange={() => {
-                    // TODO 是否完成 要放進redux
-                    // let newTodoList = todoItem.filter((h) => {
-                    //   return v.todo === h.todo && v.uuid === h.uuid;
-                    // });
-                    // // console.log(newTodoList[0].done);
-                    // newTodoList[0].done = !newTodoList[0].done;
-                    // setTodoItem([...todoItem], newTodoList[0]);
+                  onClick={() => {
+                    dispatch(doneTodo(v));
                   }}
                 ></Checkbox>
                 <div className="TodoListItem_text">
                   <p
                     style={v.done ? { textDecoration: 'line-through' } : {}}
                     onClick={() => {
-                      // TODO 是否完成 要放進redux 跟上面的是否完成一樣 要重構
-                      // let newTodoList = todoItem.filter((h) => {
-                      //   return v.todo === h.todo && v.uuid === h.uuid;
-                      // });
-                      // // console.log(newTodoList[0].done);
-                      // newTodoList[0].done = !newTodoList[0].done;
-                      // setTodoItem([...todoItem], newTodoList[0]);
+                      dispatch(doneTodo(v));
                     }}
                   >
                     {v.todo}
@@ -84,13 +70,7 @@ function TodoListItem() {
                 <div
                   className="TodoListItem_icon"
                   onClick={() => {
-                    //TODO  刪除項目 要放進redux
-                    // let newTodoList = todoItem;
-                    // newTodoList = newTodoList.filter((h) => {
-                    //   return v.uuid !== h.uuid;
-                    // });
-                    // setTodoItem(newTodoList);
-                    dispatch(delTodo(v.uuid));
+                    dispatch(delTodo(v));
                   }}
                 >
                   <MdOutlineClose />
