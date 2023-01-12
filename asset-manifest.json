@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/react-interview-1223/static/css/main.2753bdc6.css",
-    "main.js": "/react-interview-1223/static/js/main.355ed98b.js",
-    "static/js/787.b978847b.chunk.js": "/react-interview-1223/static/js/787.b978847b.chunk.js",
-    "index.html": "/react-interview-1223/index.html",
-    "main.2753bdc6.css.map": "/react-interview-1223/static/css/main.2753bdc6.css.map",
-    "main.355ed98b.js.map": "/react-interview-1223/static/js/main.355ed98b.js.map",
-    "787.b978847b.chunk.js.map": "/react-interview-1223/static/js/787.b978847b.chunk.js.map"
+    "main.css": "/static/css/main.2753bdc6.css",
+    "main.js": "/static/js/main.3ea268bc.js",
+    "static/js/787.b978847b.chunk.js": "/static/js/787.b978847b.chunk.js",
+    "index.html": "/index.html",
+    "main.2753bdc6.css.map": "/static/css/main.2753bdc6.css.map",
+    "main.3ea268bc.js.map": "/static/js/main.3ea268bc.js.map",
+    "787.b978847b.chunk.js.map": "/static/js/787.b978847b.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.2753bdc6.css",
-    "static/js/main.355ed98b.js"
+    "static/js/main.3ea268bc.js"
   ]
 }
