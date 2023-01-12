@@ -38,7 +38,7 @@ function TodoListItem() {
       // console.log(JSON.parse(window.localStorage.getItem('myTodoList')));
       setDisplayTodoItem(tmp);
     }
-  }, [moveDoneThingsToggle, todoListFromReducer]);
+  }, [moveDoneThingsToggle, todoListFromReducer, setDisplayTodoItem]);
 
   return (
     <>

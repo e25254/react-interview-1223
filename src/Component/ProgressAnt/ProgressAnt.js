@@ -16,7 +16,7 @@ function ProgressAnt() {
         Math.round((finish.length / todoListFromReducer.length) * 100)
       );
     }
-  }, [todoListFromReducer]);
+  }, [todoListFromReducer, setPercentage]);
 
   return (
     <div className="ProgressAnt">
