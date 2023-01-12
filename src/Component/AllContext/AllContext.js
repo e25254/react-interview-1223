@@ -23,28 +23,20 @@ export const AllContextProvider = ({ children }) => {
   //   done: true,
   // },
   // ]);
-  const [todoItem, setTodoItem] = useState(
-    window.localStorage.getItem('myTodoList')
-      ? JSON.parse(window.localStorage.getItem('myTodoList'))
-      : []
-  );
-  const [inputWord, setInputWord] = useState('');
+  // const [todoItem, setTodoItem] = useState(
+  //   window.localStorage.getItem('myTodoList')
+  //     ? JSON.parse(window.localStorage.getItem('myTodoList'))
+  //     : []
+  // );
   const [moveDoneThingsToggle, setMoveDoneThingsToggle] = useState(false);
   const [displayTodoItem, setDisplayTodoItem] = useState([]);
-  const [percentage, setPercentage] = useState(0);
   return (
     <AllContext.Provider
       value={{
-        todoItem,
-        setTodoItem,
-        inputWord,
-        setInputWord,
         moveDoneThingsToggle,
         setMoveDoneThingsToggle,
         displayTodoItem,
         setDisplayTodoItem,
-        percentage,
-        setPercentage,
       }}
     >
       {children}

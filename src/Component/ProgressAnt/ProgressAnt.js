@@ -1,10 +1,9 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Progress } from 'antd';
 import './ProgressAnt.scss';
-import { useAllContext } from '../AllContext/AllContext';
 import { useSelector } from 'react-redux';
 function ProgressAnt() {
-  const { percentage, setPercentage } = useAllContext();
+  const [percentage, setPercentage] = useState(0);
   const todoListFromReducer = useSelector((state) => state.TodoList);
 
   useEffect(() => {
