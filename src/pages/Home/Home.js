@@ -5,9 +5,10 @@ import MoveDoneThingsToggle from '../../Component/MoveDoneThingsToggle/MoveDoneT
 import AddToList from '../../Component/AddToList/AddToList';
 
 function TodoList() {
+  const maxHeight = window.innerHeight;
   return (
     <>
-      <div className="BackGround">
+      <div className="BackGround" style={{ height: `${maxHeight}px` }}>
         <div className="TodoList_Title">
           <h1>Todo List</h1>
           <p>Add Thing To Do</p>
