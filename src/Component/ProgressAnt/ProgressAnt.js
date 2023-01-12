@@ -2,19 +2,22 @@ import React, { useEffect } from 'react';
 import { Progress } from 'antd';
 import './ProgressAnt.scss';
 import { useAllContext } from '../AllContext/AllContext';
+import { useSelector } from 'react-redux';
 function ProgressAnt() {
-  const { percentage, setPercentage, todoItem } = useAllContext();
+  const { percentage, setPercentage } = useAllContext();
+  const todoListFromReducer = useSelector((state) => state.TodoList);
+
   useEffect(() => {
-    if (todoItem.length > 0) {
-      let finish = todoItem.filter((v) => {
+    if (todoListFromReducer.length > 0) {
+      let finish = todoListFromReducer.filter((v) => {
         return v.done;
       });
-      // let notFinish = todoItem.filter((v) => {
-      //   return !v.done;
-      // });
-      setPercentage(Math.round((finish.length / todoItem.length) * 100));
+      setPercentage(
+        Math.round((finish.length / todoListFromReducer.length) * 100)
+      );
     }
-  }, [todoItem]);
+  }, [todoListFromReducer]);
+
   return (
     <div className="ProgressAnt">
       <p>{percentage}%</p>

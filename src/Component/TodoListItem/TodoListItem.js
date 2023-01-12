@@ -13,33 +13,29 @@ function TodoListItem() {
   const { moveDoneThingsToggle, displayTodoItem, setDisplayTodoItem } =
     useAllContext();
 
-  // const doneTodoDispatch = (v) => {
-  //   dispatch(doneTodo(v.uuid));
-  // };
-
   useEffect(() => {
     if (todoListFromReducer) {
       let tmp = todoListFromReducer.map((v) => {
         return { ...v };
       });
 
-      // TODO 變更是否完成重新排後 要放進redux裏
-
-      // if (moveDoneThingsToggle) {
-      //   tmp = tmp.sort((a, b) => {
-      //     return a.done - b.done;
-      //   });
-      // } else {
-      //   tmp = tmp.sort((a, b) => {
-      //     return Date.parse(a.create_time) - Date.parse(b.create_time);
-      //   });
-      // }
+      if (moveDoneThingsToggle) {
+        tmp = tmp.sort((a, b) => {
+          return a.done - b.done;
+        });
+      } else {
+        tmp = tmp.sort((a, b) => {
+          return Date.parse(a.create_time) - Date.parse(b.create_time);
+        });
+      }
 
       // 寫進localStorage && 寫近displayTodoItem 不影響redux
       window.localStorage.setItem(
         'myTodoList',
         JSON.stringify(todoListFromReducer)
       );
+
+      // console.log(JSON.parse(window.localStorage.getItem('myTodoList')));
       setDisplayTodoItem(tmp);
     }
   }, [moveDoneThingsToggle, todoListFromReducer]);
