@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import './TodoListItem.scss';
 import { Checkbox } from 'antd';
 import { MdOutlineClose } from 'react-icons/md';
+import { FiEdit } from 'react-icons/fi';
 import { useAllContext } from '../AllContext/AllContext';
 import { useSelector, useDispatch } from 'react-redux';
 import { delTodo, doneTodo } from '../Action/Action';
@@ -62,6 +63,14 @@ function TodoListItem() {
                   >
                     {v.todo}
                   </p>
+                </div>
+                <div
+                  className="TodoListItem_icon"
+                  onClick={() => {
+                    dispatch(delTodo(v));
+                  }}
+                >
+                  <FiEdit />
                 </div>
                 <div
                   className="TodoListItem_icon"

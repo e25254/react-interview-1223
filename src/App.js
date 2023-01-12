@@ -8,9 +8,9 @@ function App() {
   return (
     <>
       <AllContextProvider>
-        <BrowserRouter basename="/react-interview-1223">
+        <BrowserRouter>
           <Routes>
-            <Route index path="/" element={<Home />} />
+            <Route index path="/react-interview-1223" element={<Home />} />
           </Routes>
         </BrowserRouter>
       </AllContextProvider>
