@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/react-interview-1223/static/css/main.5e2a0a66.css",
-    "main.js": "/react-interview-1223/static/js/main.af954646.js",
+    "main.css": "/react-interview-1223/static/css/main.2753bdc6.css",
+    "main.js": "/react-interview-1223/static/js/main.355ed98b.js",
     "static/js/787.b978847b.chunk.js": "/react-interview-1223/static/js/787.b978847b.chunk.js",
     "index.html": "/react-interview-1223/index.html",
-    "main.5e2a0a66.css.map": "/react-interview-1223/static/css/main.5e2a0a66.css.map",
-    "main.af954646.js.map": "/react-interview-1223/static/js/main.af954646.js.map",
+    "main.2753bdc6.css.map": "/react-interview-1223/static/css/main.2753bdc6.css.map",
+    "main.355ed98b.js.map": "/react-interview-1223/static/js/main.355ed98b.js.map",
     "787.b978847b.chunk.js.map": "/react-interview-1223/static/js/787.b978847b.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.5e2a0a66.css",
-    "static/js/main.af954646.js"
+    "static/css/main.2753bdc6.css",
+    "static/js/main.355ed98b.js"
   ]
 }
