@@ -37,6 +37,7 @@ const todoReducer = (
         {
           todo: action.payload,
           create_time: dayjs(new Date()).format('YYYY/MM/DD HH:mm:ss'),
+          editing: false,
           done: false,
           uuid: uuidv4(),
         },
@@ -48,16 +49,39 @@ const todoReducer = (
       });
 
     case 'DONE_TODO':
-      const newTodo = state.map((v) => {
+      const isDone = state.map((v) => {
         if (v.uuid === action.payload.uuid) {
           return { ...v, done: !v.done };
         }
         return { ...v };
       });
-      return newTodo;
+      return isDone;
+
+    case 'EDITING':
+      // console.log('要編輯了', action.payload.todo);
+      const isEdit = state.map((v) => {
+        if (v.uuid === action.payload.uuid) {
+          return { ...v, editing: !v.editing };
+        }
+        return { ...v, editing: false };
+      });
+      return isEdit;
+
+    case 'EDITVALUE':
+      // console.log(action.payload.v.uuid, action.payload.text);
+      const editValueState = state.map((v) => {
+        if (v.uuid === action.payload.v.uuid) {
+          return { ...v, todo: action.payload.text, editing: false };
+        }
+        return { ...v };
+      });
+      return editValueState;
 
     default:
-      return state;
+      //  預防編輯到一半的時候重新整理 讓網頁一進去就把所有的editing變成false
+      return state.map((v) => {
+        return { ...v, editing: false };
+      });
   }
 };
 export default todoReducer;

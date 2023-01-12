@@ -1,11 +1,11 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import './TodoListItem.scss';
 import { Checkbox } from 'antd';
 import { MdOutlineClose } from 'react-icons/md';
 import { FiEdit } from 'react-icons/fi';
 import { useAllContext } from '../AllContext/AllContext';
 import { useSelector, useDispatch } from 'react-redux';
-import { delTodo, doneTodo } from '../Action/Action';
+import { delTodo, doneTodo, editing, editValue } from '../Action/Action';
 
 function TodoListItem() {
   const todoListFromReducer = useSelector((state) => state.TodoList);
@@ -13,6 +13,33 @@ function TodoListItem() {
   // console.log('123', todoListFromReducer);
   const { moveDoneThingsToggle, displayTodoItem, setDisplayTodoItem } =
     useAllContext();
+
+  const [editingInputValue, setEditingInputValue] = useState('');
+
+  const [isComposition, setIsComposition] = useState(false);
+
+  //  輸入編輯
+  const editingInputHandler = (value) => {
+    setEditingInputValue(value.target.value);
+  };
+
+  //  提交給  redux
+  const EditValueDispatch = () => {
+    if (!editingInputValue) {
+      return;
+    }
+
+    //TODO: 要加入編輯文字的dispatch
+    // dispatch(addTodo(inputWord));
+    setEditingInputValue('');
+  };
+
+  //  按下 enter 送出
+  const pressEnter = (key) => {
+    if (key.key === 'Enter' && isComposition === false) {
+      EditValueDispatch();
+    }
+  };
 
   useEffect(() => {
     if (todoListFromReducer) {
@@ -58,16 +85,38 @@ function TodoListItem() {
                   <p
                     style={v.done ? { textDecoration: 'line-through' } : {}}
                     onClick={() => {
-                      dispatch(doneTodo(v));
+                      if (!v.editing) {
+                        dispatch(doneTodo(v));
+                      }
                     }}
                   >
-                    {v.todo}
+                    {v.editing ? (
+                      <input
+                        className="TodoListItem_editInput"
+                        placeholder={v.todo}
+                        value={editingInputValue}
+                        onChange={editingInputHandler}
+                        onCompositionStart={() => {
+                          setIsComposition(true);
+                        }}
+                        onCompositionEnd={() => {
+                          setIsComposition(false);
+                        }}
+                        onKeyDown={(key) => {
+                          if (key.key === 'Enter' && isComposition === false) {
+                            dispatch(editValue(v, editingInputValue));
+                          }
+                        }}
+                      />
+                    ) : (
+                      v.todo
+                    )}
                   </p>
                 </div>
                 <div
                   className="TodoListItem_icon"
                   onClick={() => {
-                    dispatch(delTodo(v));
+                    dispatch(editing(v));
                   }}
                 >
                   <FiEdit />
