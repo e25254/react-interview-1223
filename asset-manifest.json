@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/react-interview-1223/static/css/main.efb6c134.css",
-    "main.js": "/react-interview-1223/static/js/main.ad98168e.js",
-    "static/js/787.b978847b.chunk.js": "/react-interview-1223/static/js/787.b978847b.chunk.js",
-    "index.html": "/react-interview-1223/index.html",
-    "main.efb6c134.css.map": "/react-interview-1223/static/css/main.efb6c134.css.map",
-    "main.ad98168e.js.map": "/react-interview-1223/static/js/main.ad98168e.js.map",
-    "787.b978847b.chunk.js.map": "/react-interview-1223/static/js/787.b978847b.chunk.js.map"
+    "main.css": "/react_interview_1223/static/css/main.efb6c134.css",
+    "main.js": "/react_interview_1223/static/js/main.1b2aef2c.js",
+    "static/js/787.b978847b.chunk.js": "/react_interview_1223/static/js/787.b978847b.chunk.js",
+    "index.html": "/react_interview_1223/index.html",
+    "main.efb6c134.css.map": "/react_interview_1223/static/css/main.efb6c134.css.map",
+    "main.1b2aef2c.js.map": "/react_interview_1223/static/js/main.1b2aef2c.js.map",
+    "787.b978847b.chunk.js.map": "/react_interview_1223/static/js/787.b978847b.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.efb6c134.css",
-    "static/js/main.ad98168e.js"
+    "static/js/main.1b2aef2c.js"
   ]
 }
