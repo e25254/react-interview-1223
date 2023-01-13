@@ -21,8 +21,11 @@
       text-overflow: ellipsis;
       white-space: nowrap;
     }
-    .TodoListItem_editInput{
+    .TodoListItem_editInput {
       width: 80%;
+      border-radius: 3px;
+      border: 1px solid #7d8dbfa7;
+      color: #7d8dbf;
     }
   }
   .TodoListItem_icon {

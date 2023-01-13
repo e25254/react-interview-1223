@@ -23,23 +23,23 @@ function TodoListItem() {
     setEditingInputValue(value.target.value);
   };
 
-  //  提交給  redux
-  const EditValueDispatch = () => {
-    if (!editingInputValue) {
-      return;
-    }
+  // //  提交給  redux
+  // const EditValueDispatch = () => {
+  //   if (!editingInputValue) {
+  //     return;
+  //   }
 
-    //TODO: 要加入編輯文字的dispatch
-    // dispatch(addTodo(inputWord));
-    setEditingInputValue('');
-  };
+  //   //TODO: 要加入編輯文字的dispatch
+  //   // dispatch(addTodo(inputWord));
+  //   setEditingInputValue('');
+  // };
 
   //  按下 enter 送出
-  const pressEnter = (key) => {
-    if (key.key === 'Enter' && isComposition === false) {
-      EditValueDispatch();
-    }
-  };
+  // const pressEnter = (key) => {
+  //   if (key.key === 'Enter' && isComposition === false) {
+  //     EditValueDispatch();
+  //   }
+  // };
 
   useEffect(() => {
     if (todoListFromReducer) {
@@ -104,7 +104,11 @@ function TodoListItem() {
                         }}
                         onKeyDown={(key) => {
                           if (key.key === 'Enter' && isComposition === false) {
-                            dispatch(editValue(v, editingInputValue));
+                            if (editingInputValue !== '') {
+                              dispatch(editValue(v, editingInputValue));
+                            } else {
+                              dispatch(editValue(v, v.todo));
+                            }
                           }
                         }}
                       />
@@ -116,7 +120,16 @@ function TodoListItem() {
                 <div
                   className="TodoListItem_icon"
                   onClick={() => {
-                    dispatch(editing(v));
+                    setEditingInputValue('');
+                    if (!v.editing) {
+                      dispatch(editing(v));
+                    } else {
+                      if (editingInputValue !== '') {
+                        dispatch(editValue(v, editingInputValue));
+                      } else {
+                        dispatch(editValue(v, v.todo));
+                      }
+                    }
                   }}
                 >
                   <FiEdit />
