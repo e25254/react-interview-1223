@@ -10,7 +10,7 @@ function App() {
       <AllContextProvider>
         <BrowserRouter>
           <Routes>
-            <Route index path="/react-interview-1223" element={<Home />} />
+            <Route index path="/react_interview_1223" element={<Home />} />
           </Routes>
         </BrowserRouter>
       </AllContextProvider>

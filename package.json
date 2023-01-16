@@ -1,8 +1,8 @@
 {
-  "name": "react-interview-1223",
+  "name": "react_interview_1223",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://e25254.github.io/react-interview-1223",
+  "homepage": "https://e25254.github.io/react_interview_1223",
   "dependencies": {
     "@emotion/react": "^11.10.5",
     "@emotion/styled": "^11.10.5",

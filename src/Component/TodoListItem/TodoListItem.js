@@ -34,36 +34,40 @@ function TodoListItem() {
   //   setEditingInputValue('');
   // };
 
-  //  按下 enter 送出
-  // const pressEnter = (key) => {
-  //   if (key.key === 'Enter' && isComposition === false) {
-  //     EditValueDispatch();
-  //   }
-  // };
+  // 編輯輸入完後檢查是否為空值 否的話送出更改 是的話照原本的資料送出
+  const afterEditing = (v) => {
+    if (editingInputValue !== '') {
+      dispatch(editValue(v, editingInputValue));
+    } else {
+      dispatch(editValue(v, v.todo));
+    }
+  };
+
+  const sortTodoList = (todoList, moveDoneThingsToggle) => {
+    let tmp = todoList.map((v) => {
+      return { ...v };
+    });
+
+    if (moveDoneThingsToggle) {
+      tmp = tmp.sort((a, b) => {
+        return a.done - b.done;
+      });
+    } else {
+      tmp = tmp.sort((a, b) => {
+        return Date.parse(a.create_time) - Date.parse(b.create_time);
+      });
+    }
+
+    return tmp;
+  };
 
   useEffect(() => {
     if (todoListFromReducer) {
-      let tmp = todoListFromReducer.map((v) => {
-        return { ...v };
-      });
-
-      if (moveDoneThingsToggle) {
-        tmp = tmp.sort((a, b) => {
-          return a.done - b.done;
-        });
-      } else {
-        tmp = tmp.sort((a, b) => {
-          return Date.parse(a.create_time) - Date.parse(b.create_time);
-        });
-      }
-
-      // 寫進localStorage && 寫近displayTodoItem 不影響redux
+      const tmp = sortTodoList(todoListFromReducer, moveDoneThingsToggle);
       window.localStorage.setItem(
         'myTodoList',
         JSON.stringify(todoListFromReducer)
       );
-
-      // console.log(JSON.parse(window.localStorage.getItem('myTodoList')));
       setDisplayTodoItem(tmp);
     }
   }, [moveDoneThingsToggle, todoListFromReducer, setDisplayTodoItem]);
@@ -104,11 +108,7 @@ function TodoListItem() {
                         }}
                         onKeyDown={(key) => {
                           if (key.key === 'Enter' && isComposition === false) {
-                            if (editingInputValue !== '') {
-                              dispatch(editValue(v, editingInputValue));
-                            } else {
-                              dispatch(editValue(v, v.todo));
-                            }
+                            afterEditing(v);
                           }
                         }}
                       />
@@ -124,11 +124,7 @@ function TodoListItem() {
                     if (!v.editing) {
                       dispatch(editing(v));
                     } else {
-                      if (editingInputValue !== '') {
-                        dispatch(editValue(v, editingInputValue));
-                      } else {
-                        dispatch(editValue(v, v.todo));
-                      }
+                      afterEditing(v);
                     }
                   }}
                 >
