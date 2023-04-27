@@ -26,10 +26,43 @@ import { v4 as uuidv4 } from 'uuid';
 //     uuid: uuidv4(),
 //   },
 // ];
-const todoReducer = (
-  state = JSON.parse(window.localStorage.getItem('myTodoList')),
-  action
-) => {
+
+
+
+const initState = () => {
+  if (window.localStorage.getItem('myTodoList')) {
+    return JSON.parse(window.localStorage.getItem('myTodoList'));
+  } else {
+    return [
+      {
+        todo: 'Learn React.js',
+        create_time: dayjs(new Date()).format('YYYY/MM/DD HH:mm:ss'),
+        done: false,
+        uuid: uuidv4(),
+      },
+      {
+        todo: 'Learn Angular.js',
+        create_time: dayjs(new Date()).format('YYYY/MM/DD HH:mm:ss'),
+        done: false,
+        uuid: uuidv4(),
+      },
+      {
+        todo: 'Learn Vue.js',
+        create_time: dayjs(new Date()).format('YYYY/MM/DD HH:mm:ss'),
+        done: false,
+        uuid: uuidv4(),
+      },
+      {
+        todo: 'Learn Node.js',
+        create_time: dayjs(new Date()).format('YYYY/MM/DD HH:mm:ss'),
+        done: false,
+        uuid: uuidv4(),
+      },
+    ];
+  }
+};
+
+const todoReducer = (state = initState(), action) => {
   switch (action.type) {
     case 'ADD_TODO':
       return [
