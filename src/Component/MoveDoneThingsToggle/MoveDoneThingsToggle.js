@@ -5,6 +5,7 @@ import { useAllContext } from '../AllContext/AllContext';
 
 function MoveDoneThingsToggle() {
   const { moveDoneThingsToggle, setMoveDoneThingsToggle } = useAllContext();
+  const test = 123;
   return (
     <div className="MoveDoneThingsToggle">
       <div>
