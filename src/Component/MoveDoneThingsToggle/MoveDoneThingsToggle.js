@@ -5,7 +5,10 @@ import { useAllContext } from '../AllContext/AllContext';
 
 function MoveDoneThingsToggle() {
   const { moveDoneThingsToggle, setMoveDoneThingsToggle } = useAllContext();
-  const test = 123;
+  const test = [123];
+  if (test.length < 0) {
+    console.log('比較小');
+  }
   return (
     <div className="MoveDoneThingsToggle">
       <div>
