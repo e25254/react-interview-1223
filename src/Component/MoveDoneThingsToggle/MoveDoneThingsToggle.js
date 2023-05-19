@@ -9,6 +9,9 @@ function MoveDoneThingsToggle() {
   if (test.length < 0) {
     console.log('比較小');
   }
+  if (test.length < -1) {
+    console.log('比較小');
+  }
   return (
     <div className="MoveDoneThingsToggle">
       <div>
