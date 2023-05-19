@@ -13,3 +13,10 @@ jobs:
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
           SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
+
+
+sonar-scanner \
+  -Dsonar.projectKey=SonarQubeJerryJie \
+  -Dsonar.sources=. \
+  -Dsonar.host.url=http://10.8.7.95:9000 \
+  -Dsonar.token=sqa_4705953a06d6b390c14320e598a129145803fc0a
