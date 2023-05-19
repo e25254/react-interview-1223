@@ -5,6 +5,13 @@ import { useAllContext } from '../AllContext/AllContext';
 
 function MoveDoneThingsToggle() {
   const { moveDoneThingsToggle, setMoveDoneThingsToggle } = useAllContext();
+
+  const test = [123, 123, 124];
+
+  if (test.length < 0) {
+    console.log('test');
+  }
+
   return (
     <div className="MoveDoneThingsToggle">
       <div>
